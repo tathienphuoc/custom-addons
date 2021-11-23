@@ -1,0 +1,17 @@
+<odoo>
+    <record id="estate_property_offer_tree" model="ir.ui.view">
+        <field name="name">estate.property.offer.tree</field>
+        <field name="model">estate.property.offer.model</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" decoration-success="status=='accepted'" decoration-danger="status=='refused'" decoration-muted="status not in ('accepted','refused')">
+                <field name="price"/>
+                <field name="partner_id"/>
+                <field name="validity" string="Validity (days)"/>
+                <field name="date_deadline" string="Deadline"/>
+                <button name="accept" title="Accept" type="object" icon="fa-check" attrs="{'invisible': [('status', 'in', ('accepted','refused'))]}"/>
+                <button name="refuse" title="Refuse" type="object" icon="fa-times" attrs="{'invisible': [('status', 'in', ('accepted','refused'))]}"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,47 @@
+<odoo>
+    <record id="estate_property_type_model_action" model="ir.actions.act_window">
+        <field name="name">Property Type</field>
+        <field name="res_model">estate.property.type.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="estate_property_type_form" model="ir.ui.view">
+        <field name="model">estate.property.type.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_offers"
+                                type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="offer_count" string="Offers" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <field name="name" style="font-size:25pt"/>
+                    <!--                    <field name="offer_ids"/>-->
+                    <!--                    <field name="offer_count"/>-->
+                    <notebook>
+                        <page string="Properties">
+                            <field name="property_ids">
+                                <tree>
+                                    <field name="title"/>
+                                    <field name="expected_price"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="estate_property_type_tree" model="ir.ui.view">
+        <field name="name">estate.property.type.tree</field>
+        <field name="model">estate.property.type.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="sequence" widget="handle"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
