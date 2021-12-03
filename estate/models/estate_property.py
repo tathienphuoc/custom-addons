@@ -1,10 +1,8 @@
 from datetime import datetime
-
 from dateutil.relativedelta import relativedelta
 from odoo import fields, models,api,_
 from odoo.exceptions import UserError,ValidationError
 from odoo.tools import float_compare,float_is_zero
-
 class EstatePropertyModel(models.Model):
     _name="estate.property.model"
     _description	= "Estate Property"
@@ -87,4 +85,8 @@ class EstatePropertyModel(models.Model):
         for record in self:
             if float_compare(record.selling_price, (record.expected_price/100)*90,precision_digits=3)<=0:
                 raise ValidationError("The selling price cannot be lower than 90% of the expected price")
-            
+
+    def unlink(self):
+        if self.status not in ['new','canceled']:
+            raise UserError(_("Only new and canceled properties can be deleted"))
+        return super(EstatePropertyModel, self).unlink()

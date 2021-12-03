@@ -14,18 +14,10 @@ class EstatePropertyTypeModel(models.Model):
     @api.depends('offer_ids')
     def _offer_count(self):
         self.offer_count=len(self.offer_ids)
-
-    @api.model
     def open_offers(self):
-#         return {
-#             'name': 'abc',
-#             'view_mode': 'tree',
-#             'target': 'new',
-#             'res_model': 'estate.property.offer.model',
-#             'type': 'ir.actions.act_window',
-#         }
-        template_id = self.env.ref(offer_ids)
+        template_id = self.offer_ids.mapped('id')
         return {
+            'name':'Property Offers',
             'type': 'ir.actions.act_window',
             'res_model': 'estate.property.offer.model',
             'view_mode': 'tree',

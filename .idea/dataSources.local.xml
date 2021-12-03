@@ -10,9 +10,7 @@
       <user-name>odoo</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="database" qname="odoo">
-            <node kind="schema" qname="public" />
-          </node>
+          <node kind="database" qname="mdf" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

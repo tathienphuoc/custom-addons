@@ -7,8 +7,9 @@
         'views/estate_property_tag.xml',
         'views/estate_property_type.xml',
         'views/estate_menus.xml',
+        'views/inherit_res_users.xml',
     ],
     'depends': [
-        'base_setup',
+        'base_setup', 
     ],
 }
